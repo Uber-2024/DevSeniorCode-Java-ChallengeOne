@@ -7,18 +7,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Simulador {
-    // Declaración de variables y listas necesarias en los métodos
+    // Declaración de variables y ArrayList necesarias en los métodos
     static Scanner scanner = new Scanner(System.in);
     static List<String> planets = new ArrayList<>();
     static List<Double> distances = new ArrayList<>();
     static List<String> ships = new ArrayList<>();
     static List<Double> speeds = new ArrayList<>();
     static List<String> event = new ArrayList<>();
-    static List<Double> avance = new ArrayList<>();
-    static List<String> fuel = new ArrayList<>();
-    static List<Double> resources = new ArrayList<>();
-
-    static String Destiny;
+    static List<Double> avance = new ArrayList<>();    
+    static double tripDuration;
+    static double velocity;
+    static double distance;
 
     public static void main(String[] args) {
 
@@ -43,7 +42,7 @@ public class Simulador {
             System.out.println("\n---MENÚ DE SELECCIÓN PRINCIPAL---");
             System.out.println("1. Seleccionar planeta de destino");
             System.out.println("2. Seleccionar nave espacial");
-            System.out.println("3. Iniciar simulación del viaje");
+            System.out.println("3. Iniciar viaje");
             System.out.println("4. Salir");
             System.out.println("Elija una de las opciones por favor");
             int option = scanner.nextInt();
@@ -77,7 +76,7 @@ public class Simulador {
     }
 
     public static void planetSelection() {
-        
+
         boolean salir = false;
         while (!salir) {
             System.out.println("\n---Menú de Selección Planeta de Destino---");
@@ -90,34 +89,37 @@ public class Simulador {
             switch (selection) {
                 case 1:
 
-                    if (selection > 0 && selection <= planets.size()) 
+                    if (selection > 0 && selection <= planets.size())
                         planets.add(planets.get(selection));
-                        distances.add(distances.get(selection));
-                        System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
-                        System.out.println(InfoPlanet("C:\\Programacion\\Java\\Modulo1\\infoMarte\\Marte.txt"));
-                        naveSelection();
-                
+                    distances.add(distances.get(selection));
+                    System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
+                    System.out.println(InfoPlanet(
+                            "C:\\Programacion\\Java\\Modulo1\\SimuladorViaje\\simuladorViajeInterplanetario\\infoplanetas\\Marte.txt"));
+                    naveSelection();
+
                     break;
-                    case 2:
+                case 2:
 
-                    if (selection > 0 && selection <= planets.size()) 
+                    if (selection > 0 && selection <= planets.size())
                         planets.add(planets.get(selection));
-                        distances.add(distances.get(selection));
-                        System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
-                        
-                        naveSelection();
-                    
+                    distances.add(distances.get(selection));
+                    System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
+                    System.out.println(InfoPlanet(
+                            "C:\\Programacion\\Java\\Modulo1\\SimuladorViaje\\simuladorViajeInterplanetario\\infoplanetas\\Jupiter.txt"));
+                    naveSelection();
+
                     break;
 
-                    case 3:
+                case 3:
 
-                    if (selection > 0 && selection <= planets.size()) 
+                    if (selection > 0 && selection <= planets.size())
                         planets.add(planets.get(selection));
-                        distances.add(distances.get(selection));
-                        System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
-                        
-                        naveSelection();
-                    
+                    distances.add(distances.get(selection));
+                    System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
+                    System.out.println(InfoPlanet(
+                            "C:\\Programacion\\Java\\Modulo1\\SimuladorViaje\\simuladorViajeInterplanetario\\infoplanetas\\Saturno.txt"));
+                    naveSelection();
+
                     break;
 
                 case 4:
@@ -133,69 +135,6 @@ public class Simulador {
         }
 
         scanner.close();
-
-    }
-
-    public static void calculateResources() {
-        boolean salir = false;
-        while (!salir) {
-            System.out.println("\n---Menú de cálculo de recursos para el viaje---");
-            System.out.println("1. Combustible disponible viaje a Marte: 86.456Kg");
-            System.out.println("2. Combustible disponible viaje a Júpiter: 145.112Kg");
-            System.out.println("3. Combustible disponible viaje a Saturno: 193.486Kg");
-            System.out.println("4. Salir");
-            System.out.println("Elija una de las opciones por favor");
-            int selection = scanner.nextInt();
-            switch (selection) {
-                case 1:
-
-                    if (selection > 0 && selection <= fuel.size()) 
-                        planets.add(fuel.get(selection));
-                        resources.add(resources.get(selection));
-                        System.out.println("El planeta seleccionado fue: " + fuel.get(selection - 1));
-                        
-                
-                    break;
-                    case 2:
-
-                    if (selection > 0 && selection <= planets.size()) 
-                        planets.add(planets.get(selection));
-                        distances.add(distances.get(selection));
-                        System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
-                        
-                        naveSelection();
-                    
-                    break;
-
-                    case 3:
-
-                    if (selection > 0 && selection <= planets.size()) 
-                        planets.add(planets.get(selection));
-                        distances.add(distances.get(selection));
-                        System.out.println("El planeta seleccionado fue: " + planets.get(selection - 1));
-                        
-                        naveSelection();
-                    
-                    break;
-
-                case 4:
-                    salir = true;
-
-                    System.out.println("Usted ha decidido salir del programa, gracias!!!");
-                    break;
-
-                default:
-
-                    System.out.println("Usted ha ingresado una opción invalida, intente de nuevo por favor");
-            }
-        }
-
-        scanner.close();
-
-
-    }
-
-    public static void travelStart() {
 
     }
 
@@ -211,44 +150,98 @@ public class Simulador {
         speeds.add(200.0000);
 
         boolean salir = false;
-         
-        while (!salir){
+
+        while (!salir) {
             System.out.println("\n---Menú de Selección Nave---");
-            System.out.println("1. Argos: se trata de una nave de gran tamaño, pero es la de menor velocidad");
-            System.out.println("2. Horizon: se trata de una nave de tamaño medio, su velocidad es intermedia");
-            System.out.println("3. Starlite: se trata de una nave ligera, pero su velocidad es muy alta");
+            System.out.println(
+                    "1. Argos: se trata de una nave de gran tamaño, transportará 50 tripulante, es la de menor velocidad, pero economiza combustible solo gasta 5000Kg por dia");
+            System.out.println(
+                    "2. Horizon: se trata de una nave de tamaño medio, transportará 25 tripulantes, su velocidad es intermedia y gasta unos 8000Kg de combustible diarios");
+            System.out.println(
+                    "3. Starlite: se trata de una nave ligera, transportará 10 tripulantes, su velocidad es muy alta pero es la de mayor consumo, gasta unos 10000Kg de combustible diarios");
             System.out.println("4. Salir");
             System.out.println("Elija una de las opciones por favor");
             int selectionShip = scanner.nextInt();
 
-            switch (selectionShip){
-                
+            switch (selectionShip) {
+
                 case 1:
-                    if (selectionShip > 0 && selectionShip <= ships.size()) 
+                    if (selectionShip > 0 && selectionShip <= ships.size())
                         ships.add(ships.get(selectionShip - 1));
-                        speeds.add(speeds.get(selectionShip - 1));
-                        System.out.println("La nave seleccionada fue: " + ships.get(selectionShip - 1));
-                        menuSelection();
+                    speeds.add(speeds.get(selectionShip - 1));
+                    System.out.println("La nave seleccionada fue: " + ships.get(selectionShip - 1));
+
+                    velocity = 80.000;
+                    distance = 225;
+                    double calculateTime = distance / velocity;
+                    double tripDuration = calculateTime / 24;
+                    DecimalFormat df = new DecimalFormat(".###");
+                    System.out.println("Usted tardará en llegar a Marte" + df.format(tripDuration) + " dias");
+                    double totalfuel = tripDuration * 5000;
+                    DecimalFormat def = new DecimalFormat(".##");
+                    System.out.println("El combustible necesario para llegar a Marte viajando en la nave Argos es: "
+                            + def.format(totalfuel) + "Kg");
+
+                    int oxigentotal = 1 * 50;
+                    System.out.println(
+                            "El oxigeno necesario para llegar a Marte en la nave Argos es: " + oxigentotal + "Kg");
+                    System.out.println(
+                            "Usted está listo para iniciar el viaje, elija la opcion 3. Iniciar viaje del menú por favor");
+
+                    menuSelection();
                     break;
 
-                    case 2:
-                    if (selectionShip > 0 && selectionShip <= ships.size()) 
+                case 2:
+                    if (selectionShip > 0 && selectionShip <= ships.size())
                         ships.add(ships.get(selectionShip - 1));
-                        speeds.add(speeds.get(selectionShip - 1));
-                        System.out.println("La nave seleccionada fue: " + ships.get(selectionShip - 1));
-                        menuSelection();
+                    speeds.add(speeds.get(selectionShip - 1));
+                    System.out.println("La nave seleccionada fue: " + ships.get(selectionShip - 1));
+
+                    velocity = 120.000;
+                    distance = 968;
+                    double calculateTimej = distance / velocity;
+                    double tripDurationj = calculateTimej / 24;
+                    DecimalFormat dfj = new DecimalFormat(".###");
+                    System.out.println("Usted tardará en llegar a Júpiter" + dfj.format(tripDurationj) + " dias");
+                    double totalfuelj = tripDurationj * 8000;
+                    DecimalFormat defj = new DecimalFormat(".##");
+                    System.out.println("El combustible necesario para llegar a Júpiter viajando en la nave Horizon es: "
+                            + defj.format(totalfuelj) + "Kg");
+
+                    int oxigentotalj = 1 * 25;
+                    System.out.println(
+                            "El oxigeno necesario para llegar a Júpiter en la nave Horizon es: " + oxigentotalj + "Kg");
+                    System.out.println(
+                            "Usted está listo para iniciar el viaje, elija la opcion 3. Iniciar viaje del menú por favor");
+
+                    menuSelection();
                     break;
-                    case 3:
-                    if (selectionShip > 0 && selectionShip <= ships.size()) 
+                case 3:
+                    if (selectionShip > 0 && selectionShip <= ships.size())
                         ships.add(ships.get(selectionShip - 1));
                         speeds.add(speeds.get(selectionShip - 1));
                         System.out.println("La nave seleccionada fue: " + ships.get(selectionShip - 1));
-                        menuSelection();
+
+                        velocity = 200.000;
+                        distance = 1275;
+                        double calculateTimes = distance / velocity;
+                        double tripDurations = calculateTimes / 24;
+                        DecimalFormat dfs = new DecimalFormat(".###");
+                        System.out.println("Usted tardará en llegar a Saturno" + dfs.format(tripDurations) + " dias");
+                        double totalfuels = tripDurations * 10000;
+                        DecimalFormat defs = new DecimalFormat(".##");
+                        System.out.println("El combustible necesario para llegar a Saturno viajando en la nave Starlite es: "
+                        + defs.format(totalfuels) + "Kg");
+
+                        int oxigentotals = 1 * 10;
+                        System.out.println("El oxigeno necesario para llegar a Saturno en la nave Starlite es: " + oxigentotals + "Kg");
+                        System.out.println("Usted está listo para iniciar el viaje, elija la opcion 3. Iniciar viaje del menú por favor");
+
+                    menuSelection();
                     break;
 
-                    case 4:
+                case 4:
                     salir = true;
-
                     System.out.println("Usted ha decidido salir del programa, gracias!!!");
                     break;
 
@@ -256,29 +249,33 @@ public class Simulador {
 
                     System.out.println("Usted ha ingresado una opción invalida, intente de nuevo por favor");
 
-                }
-         } 
+            }
+        }
 
         scanner.close();
-                               
-           
-    }  
+
+    }
+
+    public static void travelStart() {
+
+    }
 
     // metodos auxiliares
-    public static String InfoPlanet(String direction) {//mandar la direccion del archivo
+    public static String InfoPlanet(String direction) {// mandar la direccion del archivo
         String texto = "";
-        try {//Programar el try
+        try {// Programar el try
             BufferedReader bf = new BufferedReader(new FileReader(direction));
-            String temp= "";
+            String temp = "";
             String bfRead;
-            while ((bfRead = bf.readLine())!=null) {
-            // Realizar el ciclo mientras que bfRead tenga datos
-            temp = temp+bfRead;//Guarda el texto obtenido
-                
+            while ((bfRead = bf.readLine()) != null) {
+                // Realizar el ciclo mientras que bfRead tenga datos
+                temp = temp + bfRead;// Guarda el texto obtenido
+
             }
             texto = temp;
-        } catch (Exception e) {System.err.println("No se encontró el archivo");
-            
+        } catch (Exception e) {
+            System.err.println("No se encontró el archivo");
+
         }
         return texto;
 

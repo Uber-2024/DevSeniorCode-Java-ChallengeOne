@@ -5,7 +5,7 @@ public class App {
        Simulador.menuSelection();
     Simulador.planetSelection();
     Simulador.naveSelection();
-    Simulador.travelStart();
+    
        
     }
 }
