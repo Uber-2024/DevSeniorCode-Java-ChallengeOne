@@ -92,6 +92,8 @@ public class Simulador {
 
                     if (option <= 0) {
                         System.out.println("Usted ha ingresado una opción invalida, intente de nuevo por favor");
+                    }else if(option > 4){
+                        System.out.println("Usted ha ingresado una opción invalida, intente de nuevo por favor");
                     }
 
             }
@@ -594,7 +596,7 @@ public class Simulador {
                 menuSelection();
 
             }
-            scanner.close();
+            
         }
 
     }
