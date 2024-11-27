@@ -466,16 +466,16 @@ public class Simulador {
                         double tripDuration = calculateTime / 24;// Calcula cuanto demora el viaje hasta Saturno con la
                                                                  // nave 1
                         DecimalFormat df = new DecimalFormat(".###");
-                        System.out.println("Usted tardará en llegar a Marte" + df.format(tripDuration) + " dias");
+                        System.out.println("Usted tardará en llegar a Saturno" + df.format(tripDuration) + " dias");
                         double totalfuel = tripDuration * 5000;// Calcula el gasto de combustible durante el viaje en Kg
                         DecimalFormat def = new DecimalFormat(".##");
-                        System.out.println("El combustible necesario para llegar a Marte viajando en la nave Argos es: "
+                        System.out.println("El combustible necesario para llegar a Saturno viajando en la nave Argos es: "
                                 + def.format(totalfuel) + "Kg");
 
                         double oxigentotal = 1 * 50 * tripDuration;// Calcula el oxígeno necesario para realizar el
                                                                    // viaje completo en la nave 1
                         System.out.println(
-                                "El oxigeno necesario para llegar a Marte en la nave Argos es: " + df.format(oxigentotal)
+                                "El oxigeno necesario para llegar a Saturno en la nave Argos es: " + df.format(oxigentotal)
                                         + "Kg diarios");
                         System.out.println(
                                 "¡¡Felicidades!!!. Usted está listo para iniciar el viaje. Elija la opcion 3: INICIAR VIAJE del menú principal por favor");
@@ -495,18 +495,18 @@ public class Simulador {
                         double tripDurationj = calculateTimej / 24;// Calcula cuanto demora el viaje hasta Saturno con
                                                                    // la nave 2
                         DecimalFormat dfj = new DecimalFormat(".###");
-                        System.out.println("Usted tardará en llegar a Júpiter" + dfj.format(tripDurationj) + " dias");
+                        System.out.println("Usted tardará en llegar a Saturno" + dfj.format(tripDurationj) + " dias");
                         double totalfuelj = tripDurationj * 8000;// Calcula el gasto de combustible durante el viaje en
                                                                  // Kg
                         DecimalFormat defj = new DecimalFormat(".##");
                         System.out.println(
-                                "El combustible necesario para llegar a Júpiter viajando en la nave Horizon es: "
+                                "El combustible necesario para llegar a Saturno viajando en la nave Horizon es: "
                                         + defj.format(totalfuelj) + "Kg");
 
                         double oxigentotalj = 2 * 25 * tripDurationj;// Calcula el oxígeno necesario para realizar el
                                                                      // viaje completo en la nave 2
                         System.out.println(
-                                "El oxigeno necesario para llegar a Júpiter en la nave Horizon es: " + dfj.format(oxigentotalj)
+                                "El oxigeno necesario para llegar a Saturno en la nave Horizon es: " + dfj.format(oxigentotalj)
                                         + "Kg diarios");
                         System.out.println(
                                 "¡¡Felicidades!!!. Usted está listo para iniciar el viaje, elija la opcion 3 INICIAR VIAJE, del menú principal por favor");
